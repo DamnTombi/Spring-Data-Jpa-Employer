@@ -1,0 +1,97 @@
+REST API Employee
+-----------------
+
+Postman для тесту REST API
+https://www.postman.com/
+
+УВАГА на дані в консолі IDE щодо Hibernate.
+
+
+(1) Отримання всіх даних
+
+GET
+http://localhost:8080/api/v1/employees
+
+
+(2) Створення даних
+
+POST
+http://localhost:8080/api/v1/employees
+
+Body -> raw -> JSON
+
+Приклади:
+
+{
+    "firstName": "Іван",
+    "lastName": "Петренко",
+    "position": "Менеджер",
+    "phone": "+380501234567"
+}
+
+{
+    "firstName": "Марія",
+    "lastName": "Коваленко",
+    "position": "Розробник",
+    "phone": "+380671112233"
+}
+
+{
+    "firstName": "Олег",
+    "lastName": "Шевченко",
+    "position": "Менеджер",
+    "phone": "+380931234567"
+}
+
+
+(3) Отримання даних за id
+
+GET
+http://localhost:8080/api/v1/employees/2
+
+Також спробуйте за неіснуючим id (наприклад, 99).
+
+
+(4) Отримання даних за посадою (position)
+
+GET
+http://localhost:8080/api/v1/employees/by-position?position=Менеджер
+
+GET
+http://localhost:8080/api/v1/employees/by-position?position=Розробник
+
+Якщо записи відсутні:
+GET
+http://localhost:8080/api/v1/employees/by-position?position=Директор
+
+
+(5) Отримання даних за прізвищем (lastName)
+
+GET
+http://localhost:8080/api/v1/employees/by-last-name?lastName=Петренко
+
+GET
+http://localhost:8080/api/v1/employees/by-last-name?lastName=Коваленко
+
+
+(6) Оновлення даних за id
+
+PUT
+http://localhost:8080/api/v1/employees/1
+
+Body -> raw -> JSON
+
+{
+    "position": "Старший менеджер",
+    "phone": "+380500000001"
+}
+
+Перевірте GET за цим id.
+
+
+(7) Видалення даних за id
+
+DELETE
+http://localhost:8080/api/v1/employees/3
+
+Спробуйте видалити повторно.
